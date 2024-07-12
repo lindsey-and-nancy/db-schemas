@@ -10,21 +10,21 @@ datasource db {
 
 model Scan {
   id          Int           @id
-  endAt       DateTime
+  end_at       DateTime
   Observation Observation[]
 }
 
 model Behaviour {
   id          String        @id
-  Locations   Location[]
-  Observation Observation[]
+  locations   Location[]
+  observation Observation[]
 }
 
 ///  Cage type can be T, P, etc. 
 model Cage {
   id          Int           @id
   type        String
-  Observation Observation[]
+  observation Observation[]
 }
 
 model Observation {
@@ -49,13 +49,13 @@ model Observation {
 
 model Mouse {
   id          Int           @id
-  Observation Observation[]
+  observation Observation[]
 }
 
 model Housing {
   id          String        @id
   enriched    Boolean
-  Observation Observation[]
+  observation Observation[]
 }
 
 enum Location {
