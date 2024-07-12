@@ -1,0 +1,19 @@
+{
+  "name": "db-schemas",
+  "version": "0.0.1",
+  "description": "Holds database schemas for the behavioural observation data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nancy Cantu",
+  "license": "ISC",
+  "dependencies": {
+    "prisma": "^5.16.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10"
+  }
+}
