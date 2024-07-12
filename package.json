@@ -9,6 +9,7 @@
   "author": "Nancy Cantu",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.16.2",
     "prisma": "^5.16.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"

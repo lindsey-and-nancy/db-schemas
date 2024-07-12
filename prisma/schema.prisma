@@ -1,14 +1,86 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Scan {
+  id          Int           @id
+  endAt       DateTime
+  Observation Observation[]
+}
+
+model Behaviour {
+  id          String        @id
+  Locations   Location[]
+  Observation Observation[]
+}
+
+///  Cage type can be T, P, etc. 
+model Cage {
+  id          Int           @id
+  type        String
+  Observation Observation[]
+}
+
+model Observation {
+  id           Int       @id @default(autoincrement())
+  date         DateTime
+  scan         Scan      @relation(fields: [scan_id], references: [id])
+  scan_id      Int
+  cage         Cage      @relation(fields: [cage_id], references: [id])
+  cage_id      Int
+  mouse        Mouse     @relation(fields: [mouse_id], references: [id])
+  mouse_id     Int
+  housing      Housing   @relation(fields: [housing_id], references: [id])
+  housing_id   String
+  behaviour    Behaviour @relation(fields: [behaviour_id], references: [id])
+  behaviour_id String
+  location     Location
+  modifier     Modifier
+  direction    Direction
+  shape        Shape
+  movement     Movement
+}
+
+model Mouse {
+  id          Int           @id
+  Observation Observation[]
+}
+
+model Housing {
+  id          String        @id
+  enriched    Boolean
+  Observation Observation[]
+}
+
+enum Location {
+  a
+  wr
+  anx
+}
+
+enum Modifier {
+  psoc
+  peu
+}
+
+enum Direction {
+  cnt
+  clc
+}
+
+enum Movement {
+  trns
+}
+
+/// fill out with actual shapes
+enum Shape {
+  cir
+  rec
+  sq
 }
