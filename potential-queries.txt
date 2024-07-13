@@ -1,0 +1,2 @@
+DATE, MOUSE_ID, HOUSING TYPE
+for each id then query behaviours > stereotypies > specific stereotypy
